@@ -13,12 +13,12 @@ describe ("test the server", () => {
     // });
 
     
-    test("/getNews rout", async () => {
-        const res = await app.get("/getNews")
-        .expect("Content-Type", /json/)
-        expect(res.status).toBe(200)
-        expect(res.body).not.toBeNull();
-    });
+    // test("/getNews rout", async () => {
+    //     const res = await app.get("/getNews")
+    //     .expect("Content-Type", /json/)
+    //     expect(res.status).toBe(200)
+    //     expect(res.body).not.toBeNull();
+    // });
 
 });
 
