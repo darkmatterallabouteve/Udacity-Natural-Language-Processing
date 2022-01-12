@@ -19,20 +19,27 @@ function handleSubmit(event) {
 
     console.log("::: Form Submitted :::")
 
-    fetch('http://localhost:8081/aylienNewsApiCall', {
+    //fetch('http://localhost:8081/aylienNewsApiCall', {
+    fetch('http://localhost:8081/meaningCloudApiCall', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title:titleSearchText })
         })
     .then(res => res.json())
     .then(function(res) {
+        console.log("Returned")
+        console.log(res)
 
-        let storyArray = res.stories;
-        for (let i in storyArray) {
-            document.getElementById('results').innerHTML += "(" + i + ") " + storyArray[i].title + "<br/>";
-        }
+        // let storyArray = res.stories;
+        // for (let i in storyArray) {
+        //     document.getElementById('results').innerHTML += "(" + i + ") " + storyArray[i].title + "<br/>";
+        // }
+
+        document.getElementById('results').innerHTML += "( Agreement ) " + res.agreement + "<br/>";
+        document.getElementById('results').innerHTML += "( Subjectivity ) " + res.subjectivity + "<br/>";
+        document.getElementById('results').innerHTML += "( Confidence ) " + res.confidence + "<br/>";
+        document.getElementById('results').innerHTML += "( Irony ) " + res.irony + "<br/>";
     })
 }
 
 export { handleSubmit }
-
