@@ -22,7 +22,7 @@ function handleSubmit(event) {
     fetch('http://localhost:8081/aylienNewsApiCall', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ url:titleSearchText })
+            body: JSON.stringify({ title:titleSearchText })
         })
     .then(res => res.json())
     .then(function(res) {

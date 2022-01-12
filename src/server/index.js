@@ -35,7 +35,7 @@ app.get('/', function (req, res) {
 app.post('/aylienNewsApiCall', function (req, res) {
     
     var opts = {
-        title: req.body.url,
+        title: req.body.title,
         publishedAtStart: "NOW-7DAYS",
         publishedAtEnd: "NOW"
       };
@@ -55,3 +55,4 @@ app.post('/aylienNewsApiCall', function (req, res) {
 app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
+
