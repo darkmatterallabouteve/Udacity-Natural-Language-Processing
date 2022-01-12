@@ -8,7 +8,9 @@ function handleSubmit(event) {
     document.getElementById('results').innerHTML = "";
     document.getElementById('inputErrorMsg').innerHTML = "";
 
-    Client.checkForName(titleSearchText);
+    if(Client.checkForName(titleSearchText)){
+        alert("Welcome, Captain!")
+    }
 
     if (titleSearchText == "") {
         document.getElementById('inputErrorMsg').innerHTML = "Invalid or Empty input";
@@ -33,3 +35,4 @@ function handleSubmit(event) {
 }
 
 export { handleSubmit }
+
