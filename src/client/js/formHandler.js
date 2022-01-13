@@ -2,18 +2,14 @@ function handleSubmit(event) {
     event.preventDefault();
 
     // check what text was put into the form field
-    let titleSearchText = document.getElementById('titlesearch').value;
+    let urlText = document.getElementById('urlText').value;
 
     //Clear the results and validation message
     document.getElementById('results').innerHTML = "";
     document.getElementById('inputErrorMsg').innerHTML = "";
 
-    if(Client.checkForName(titleSearchText)){
-        alert("Welcome, Captain!")
-    }
-
-    if (titleSearchText == "") {
-        document.getElementById('inputErrorMsg').innerHTML = "Invalid or Empty input";
+    if(!Client.checkForValidUrl(urlText)){
+        document.getElementById('inputErrorMsg').innerHTML = "Invalid URL or Empty input (example: https://www.google.com)";
         return false;
     }
 
@@ -23,7 +19,7 @@ function handleSubmit(event) {
     fetch('http://localhost:8081/meaningCloudApiCall', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ title:titleSearchText })
+            body: JSON.stringify({ title:urlText })
         })
     .then(res => res.json())
     .then(function(res) {

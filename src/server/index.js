@@ -38,7 +38,7 @@ app.post('/meaningCloudApiCall', getSentimentAnalysis)
 
 async function getSentimentAnalysis(req, res) {
 
-    const urlToAPI = "https://api.meaningcloud.com/sentiment-2.1?key=" + process.env.API_KEY + "&txt=" + req.body.title + "&lang=en";
+    const urlToAPI = "https://api.meaningcloud.com/sentiment-2.1?key=" + process.env.API_KEY + "&url=" + req.body.title + "&lang=en";
 
         const response = await fetch(urlToAPI);
         try {
@@ -71,9 +71,16 @@ async function getNews(req, res) {
     );
 }
 
+function tester(input){
+    if(input) {
+        return true;
+    }
+    return false;
+}
+
 // designates what port the app will listen to for incoming requests
 const server = app.listen(8081, function () {
     console.log('Example app listening on port 8081!')
 })
 
-module.exports = getNews;
+module.exports = getSentimentAnalysis, tester;
